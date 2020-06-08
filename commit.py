@@ -10,21 +10,30 @@ today = dt.date.today()
 row = today.weekday()
 col = (today - start).days // 7
 
-with open("pattern.csv", "r") as f:
-    value = f.readlines()[row].split(";")[col]
-value = fg if value == "x" else bg
+
+
+def commits_for(row, col):
+    with open("pattern.csv", "r") as f:
+        value = f.readlines()[row].split(";")
+        value = value[col%len(value)]
+    value = fg if value == "X" or value == "\ufeffX" else bg
+    return value
+
+
 
 commit_and_push = """
 echo Hello World >> README.md
 git add .
-git commit -m "Hello World\!"
+git commit -m "Hello World!"
 git push
 
-echo #Hello World > README.md
+echo \# Hello World > README.md
 git add .
-git commit -m "Hello World\!"
+git commit -m "Hello again!"
 git push
 """
 
-for _ in range(value):
-    os.system(commit_and_push)
+# for _ in range(commits_for(row, col)):
+#     os.system(commit_and_push)
+
+os.system(commit_and_push)
