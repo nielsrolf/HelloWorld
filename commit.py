@@ -2,7 +2,7 @@ import datetime as dt
 import os
 
 bg = 10 # number of commits for the background divided by 2
-fg = 30
+fg = 32
 
 start = dt.date(2020, 6, 7)
 
@@ -34,8 +34,8 @@ git commit -m "Hello again!"
 with open("counts", "r") as f:
     line = f.readline()
 contributions = int(line.split("data-count=\"")[1].split("\"")[0])
-todo = commits_for(row, col) - contributions
+todo = commits_for(row, col)//2 - contributions
 
-for _ in range(commits_for(row, col) - contributions):
+for _ in todo:
     os.system(commit_twice)
 os.system("git push")
