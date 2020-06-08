@@ -1,10 +1,8 @@
 name: "Greet World"
 
-# on:
-#   schedule:
-#     - cron: '45 23 * * *'
-
-on: push
+on:
+  schedule:
+    - cron: '45 23 * * *'
 
 jobs:
   greet:

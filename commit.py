@@ -35,7 +35,7 @@ with open("counts", "r") as f:
     line = f.readline()
 contributions = int(line.split("data-count=\"")[1].split("\"")[0])
 todo = commits_for(row, col) - contributions
-print(f"Todo: {todo}")
-# for _ in range(commits_for(row, col) - contributions):
-#     os.system(commit_twice)
-# os.system("git push")
+
+for _ in range(commits_for(row, col) - contributions):
+    os.system(commit_twice)
+os.system("git push")
