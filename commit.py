@@ -4,7 +4,7 @@ import os
 bg = 10 # number of commits for the background divided by 2
 fg = 30
 
-start = dt.date(2020, 6, 8)
+start = dt.date(2020, 6, 7)
 
 today = dt.date.today()
 row = today.weekday()
