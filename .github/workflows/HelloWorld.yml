@@ -1,8 +1,8 @@
 name: "Greet World"
 
-on:
-  schedule:
-    - cron: "14 22 * * *"
+on: push
+#   schedule:
+#     - cron: "14 22 * * *"
 
 jobs:
   greet:
@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - run: date
-    - run: source greet_slowly.sh 
-      env:
-        SSH_KEY: ${{ secrets.SSH_KEY }}
+      - run: date
+    # - name: Checkout
+    #   uses: actions/checkout@v2
+    # - run: date
+    # - run: source greet_slowly.sh 
+    #   env:
+    #     SSH_KEY: ${{ secrets.SSH_KEY }}
