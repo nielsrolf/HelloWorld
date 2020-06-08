@@ -34,7 +34,7 @@ git commit -m "Hello again!"
 with open("counts", "r") as f:
     line = f.readline()
 contributions = int(line.split("data-count=\"")[1].split("\"")[0])
-todo = commits_for(row, col)//2 - contributions
+todo = (commits_for(row, col) - contributions)//2
 
 for _ in todo:
     os.system(commit_twice)
