@@ -6,10 +6,11 @@ on: push
 
 jobs:
   greet:
-    name: deploy
+    name: greet
     runs-on: ubuntu-latest
 
     steps:
+      - run: ls -R
       - run: source greet_slowly.sh 
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
