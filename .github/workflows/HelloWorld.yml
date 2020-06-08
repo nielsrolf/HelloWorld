@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: ls -R
-      - run: source greet_slowly.sh 
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
+    - name: Checkout
+      uses: actions/checkout@v2
+    - run: ls -R
+    - run: source greet_slowly.sh 
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
