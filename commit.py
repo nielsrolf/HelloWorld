@@ -1,8 +1,8 @@
 import datetime as dt
 import os
 
-bg = 3 # number of commits for the background divided by 2
-fg = 15
+bg = 10 # number of commits for the background divided by 2
+fg = 30
 
 start = dt.date(2020, 6, 8)
 
@@ -21,19 +21,21 @@ def commits_for(row, col):
 
 
 
-commit_and_push = """
+commit_twice = """
 echo Hello World >> README.md
-git add .
+git add README.md
 git commit -m "Hello World!"
-git push
 
 echo \# Hello World > README.md
-git add .
+git add README.md
 git commit -m "Hello again!"
-git push
 """
 
-# for _ in range(commits_for(row, col)):
-#     os.system(commit_and_push)
-
-os.system(commit_and_push)
+with open("counts", "r") as f:
+    line = f.readline()
+contributions = int(line.split("data-count=\"")[1].split("\"")[0])
+todo = commits_for(row, col) - contributions
+print(f"Todo: {todo}")
+# for _ in range(commits_for(row, col) - contributions):
+#     os.system(commit_twice)
+# os.system("git push")
