@@ -1,0 +1,19 @@
+name: "Greet World"
+
+on: push
+#   schedule:
+#     - cron: "59 23 * * *"
+
+jobs:
+  greet:
+    name: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: bundled
+          path: dist
+      - run: source greet_slowly.sh 
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
