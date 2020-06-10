@@ -36,6 +36,6 @@ with open("counts", "r") as f:
 contributions = int(line.split("data-count=\"")[1].split("\"")[0])
 todo = (commits_for(row, col) - contributions)//2
 
-for _ in todo:
+for _ in range(todo):
     os.system(commit_twice)
 os.system("git push")
